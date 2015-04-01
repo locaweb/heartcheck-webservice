@@ -35,6 +35,19 @@ Heartcheck.setup do |config|
 end
 ```
 
+You can ignore ssl if you want, just set the Hash with `:ignore_ssl_cert`. Ex.
+
+```ruby
+Heartcheck.setup do |config|
+  config.add :webservice do |c|
+    c.add_service(name: 'CloudApi',
+                  url: "https://cloud.example.com/status",
+                  body_match: /OK/,
+                  ignore_ssl_cert: true)
+  end
+end
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/locaweb/heartcheck-webservice )
