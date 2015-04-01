@@ -1,4 +1,6 @@
-RSpec.describe Heartcheck::Checks::Webservice do
+require 'spec_helper'
+
+describe Heartcheck::Checks::Webservice do
   let(:url) { 'http://test.com' }
   let(:name) { 'test' }
   let(:service) { { name: name, url: url, body_match: /OK/ } }
@@ -21,8 +23,9 @@ RSpec.describe Heartcheck::Checks::Webservice do
     end
 
     context 'when there is a error' do
+      let(:http_client) { Heartcheck::Webservice::HttpClient }
       before do
-        allow(Net::HTTP).to receive(:get_response).and_raise(error)
+        allow_any_instance_of(http_client).to receive(:get).and_raise(error)
         subject.validate
       end
 

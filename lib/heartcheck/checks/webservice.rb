@@ -79,8 +79,8 @@ module Heartcheck
       #
       # @return [Net:HTTP]
       def request_for(service)
-        uri = URI(service[:url])
-        Net::HTTP.get_response(uri)
+        Heartcheck::Webservice::HttpClient.new(service[:url],
+                                               service[:ignore_ssl_cert]).get
       end
     end
   end
