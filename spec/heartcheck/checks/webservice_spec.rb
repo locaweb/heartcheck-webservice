@@ -10,8 +10,8 @@ RSpec.describe Heartcheck::Checks::Webservice do
     context 'when there is no error' do
       before do
         FakeWeb.register_uri(:get, url,
-                             :body => "OK",
-                             :status => "200")
+                             body: 'OK',
+                             status: '200')
         subject.validate
       end
 
@@ -32,25 +32,31 @@ RSpec.describe Heartcheck::Checks::Webservice do
 
       context 'when throw SocketError error' do
         let(:error) { SocketError.new }
+        let(:error_return) { 'inaccessible' }
 
         it 'returns inaccessible' do
-          expect(subject.instance_variable_get(:@errors).first).to include 'inaccessible'
+          obj = subject.instance_variable_get(:@errors)
+          expect(obj.first).to include error_return
         end
       end
 
       context 'when throw Timeout error' do
         let(:error) { Timeout::Error.new }
+        let(:error_return) { 'timeout' }
 
         it 'returns timeout' do
-          expect(subject.instance_variable_get(:@errors).first).to include 'timeout'
+          obj = subject.instance_variable_get(:@errors)
+          expect(obj.first).to include error_return
         end
       end
 
       context 'when throw unexpected error' do
         let(:error) { StandardError.new('error message') }
+        let(:error_return) { 'error message' }
 
         it 'returns exceptions message' do
-          expect(subject.instance_variable_get(:@errors).first).to include 'error message'
+          obj = subject.instance_variable_get(:@errors)
+          expect(obj.first).to include error_return
         end
       end
     end
