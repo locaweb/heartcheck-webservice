@@ -32,7 +32,7 @@ module Heartcheck
       # @return [void]
       def execute(service)
         response = request_for(service)
-        error = validation(response, service)
+        error = valid?(response, service)
 
         append_error(service, error) if error
       rescue SocketError
@@ -49,7 +49,7 @@ module Heartcheck
       # @param service [Hash] An identifier of service
       #
       # @return [String]
-      def validation(response, service)
+      def valid?(response, service)
         return nil if valid_status?(response) && valid_body?(response, service)
         'unexpected_response'
       end
