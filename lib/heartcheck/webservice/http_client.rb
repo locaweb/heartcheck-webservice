@@ -3,11 +3,18 @@ module Heartcheck
   module Webservice
     # Http Client
     class HttpClient
-      attr_reader :uri, :http
+      attr_reader :uri, :http, :proxy
 
-      def initialize(url, ignore_ssl_cert)
+      def initialize(url, proxy, ignore_ssl_cert)
         @uri = URI url
-        @http =  Net::HTTP.new(@uri.host, @uri.port)
+
+        if proxy
+          @proxy = URI proxy
+          @http = Net::HTTP.new(@uri.host, @uri.port, @proxy.host, @proxy.port)
+        else
+          @http =  Net::HTTP.new(@uri.host, @uri.port)
+        end
+
         @http.use_ssl = @uri.scheme == 'https'
         @http.verify_mode = OpenSSL::SSL::VERIFY_NONE if ignore_ssl_cert
       end

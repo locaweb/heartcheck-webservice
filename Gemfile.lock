@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    heartcheck-webservice (1.1.0)
+    heartcheck-webservice (1.2.0)
       heartcheck (~> 1.0.0, >= 1.0.0)
 
 GEM
@@ -27,7 +27,7 @@ GEM
       slop (~> 3.4)
     pry-nav (0.2.4)
       pry (>= 0.9.10, < 0.11.0)
-    rack (1.6.0)
+    rack (1.6.1)
     rainbow (2.0.0)
     redcarpet (3.2.2)
     rspec (3.1.0)
@@ -63,3 +63,6 @@ DEPENDENCIES
   rspec (~> 3.1.0, >= 3.1.0)
   rubocop (~> 0.27.0, >= 0.27.1)
   yard (~> 0.8.0, >= 0.8.7)
+
+BUNDLED WITH
+   1.10.3
