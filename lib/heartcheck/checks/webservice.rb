@@ -81,7 +81,8 @@ module Heartcheck
       def request_for(service)
         Heartcheck::Webservice::HttpClient.new(service[:url],
                                                service[:proxy],
-                                               service[:ignore_ssl_cert]).get
+                                               service[:ignore_ssl_cert],
+                                               service[:headers]).get
       end
     end
   end

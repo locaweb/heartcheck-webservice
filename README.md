@@ -35,13 +35,15 @@ Heartcheck.setup do |config|
 end
 ```
 
-You can ignore ssl if you want, just set the Hash with `:ignore_ssl_cert`. Ex.
+Here is an example using all available options:
 
 ```ruby
 Heartcheck.setup do |config|
   config.add :webservice do |c|
     c.add_service(name: 'CloudApi',
                   url: "https://cloud.example.com/status",
+                  proxy: "10.20.30.40:8888",
+                  headers: { "MY-API-KEY" => "abc123" },
                   body_match: /OK/,
                   ignore_ssl_cert: true)
   end
