@@ -82,7 +82,8 @@ module Heartcheck
         Heartcheck::Webservice::HttpClient.new(service[:url],
                                                service[:proxy],
                                                service[:ignore_ssl_cert],
-                                               service[:headers]).get
+                                               service[:headers],
+                                               service[:timeout]).get
       end
     end
   end

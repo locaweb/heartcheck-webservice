@@ -3,9 +3,9 @@ module Heartcheck
   module Webservice
     # Http Client
     class HttpClient
-      attr_reader :uri, :http, :proxy, :headers, :request
+      attr_reader :uri, :http, :proxy, :headers, :request, :timeout
 
-      def initialize(url, proxy, ignore_ssl_cert, headers)
+      def initialize(url, proxy, ignore_ssl_cert, headers, timeout = nil)
         @uri = URI(url)
         @headers = headers || {}
         @proxy = URI(proxy) if proxy
@@ -13,6 +13,7 @@ module Heartcheck
         @http = Net::HTTP.new(@uri.host, @uri.port, proxy_host, proxy_port)
         @http.use_ssl = @uri.scheme == 'https'
         @http.verify_mode = OpenSSL::SSL::VERIFY_NONE if ignore_ssl_cert
+        @http.open_timeout = timeout if timeout
       end
 
       def get

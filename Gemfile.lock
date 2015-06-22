@@ -63,6 +63,3 @@ DEPENDENCIES
   rspec (~> 3.1.0, >= 3.1.0)
   rubocop (~> 0.27.0, >= 0.27.1)
   yard (~> 0.8.0, >= 0.8.7)
-
-BUNDLED WITH
-   1.10.3
