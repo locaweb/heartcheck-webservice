@@ -46,7 +46,8 @@ Heartcheck.setup do |config|
                   headers: { "MY-API-KEY" => "abc123" },
                   body_match: /OK/,
                   ignore_ssl_cert: true,
-                  timeout: 60)
+                  open_timeout: 2,
+                  read_timeout: 60)
   end
 end
 ```
