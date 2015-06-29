@@ -43,10 +43,16 @@ describe Heartcheck::Webservice::HttpClient do
     end
 
     context 'when timeout' do
-      it 'sets timeout' do
+      it 'sets open timeout' do
         expect_any_instance_of(Net::HTTP).to receive(:open_timeout=)
           .with(2)
         described_class.new(uri, nil, true, nil, 2)
+      end
+
+      it 'sets read timeout' do
+        expect_any_instance_of(Net::HTTP).to receive(:read_timeout=)
+          .with(5)
+        described_class.new(uri, nil, true, nil, nil, 5)
       end
     end
   end

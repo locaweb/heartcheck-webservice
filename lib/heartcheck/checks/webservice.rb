@@ -83,7 +83,8 @@ module Heartcheck
                                                service[:proxy],
                                                service[:ignore_ssl_cert],
                                                service[:headers],
-                                               service[:timeout]).get
+                                               service[:open_timeout],
+                                               service[:read_timeout]).get
       end
     end
   end
