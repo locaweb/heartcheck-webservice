@@ -45,7 +45,8 @@ Heartcheck.setup do |config|
                   proxy: "10.20.30.40:8888",
                   headers: { "MY-API-KEY" => "abc123" },
                   body_match: /OK/,
-                  ignore_ssl_cert: true)
+                  ignore_ssl_cert: true,
+                  timeout: 60)
   end
 end
 ```

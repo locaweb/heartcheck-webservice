@@ -4,15 +4,15 @@ describe Heartcheck::Webservice::HttpClient do
   let(:url) { 'http://test.com' }
   let(:uri) { URI url }
   let(:subject) { described_class.new(url, nil, false, nil) }
-  let(:proxy_path) { "http://10.20.30.40:8888" }
+  let(:proxy_path) { 'http://10.20.30.40:8888' }
 
   describe '#initialize' do
     let(:http) { double.as_null_object }
 
-    context "with http proxy" do
-      it "initializes Net::HTTP with a proxy configured" do
+    context 'with http proxy' do
+      it 'initializes Net::HTTP with a proxy configured' do
         expect(Net::HTTP).to receive(:new)
-          .with(uri.host, uri.port, "10.20.30.40", 8888)
+          .with(uri.host, uri.port, '10.20.30.40', 8888)
           .and_return(http)
         described_class.new(url, proxy_path, false, nil)
       end
@@ -41,18 +41,33 @@ describe Heartcheck::Webservice::HttpClient do
         described_class.new(uri, nil, true, nil)
       end
     end
+
+    context 'when timeout' do
+      it 'sets open timeout' do
+        expect_any_instance_of(Net::HTTP).to receive(:open_timeout=)
+          .with(2)
+        described_class.new(uri, nil, true, nil, 2)
+      end
+
+      it 'sets read timeout' do
+        expect_any_instance_of(Net::HTTP).to receive(:read_timeout=)
+          .with(5)
+        described_class.new(uri, nil, true, nil, nil, 5)
+      end
+    end
   end
 
   describe '#get' do
-    context "with headers" do
-      subject { described_class.new(url, nil, false, "X-API-KEY" => "123abc") }
+    context 'with headers' do
+      subject { described_class.new(url, nil, false, 'X-API-KEY' => '123abc') }
 
-      it "uses the given headers in the request" do
-        expect_any_instance_of(Net::HTTP).to receive(:request).and_return(double)
+      it 'uses the given headers in the request' do
+        expect_any_instance_of(Net::HTTP).to receive(:request)
+          .and_return(double)
 
         subject.get
 
-        expect(subject.request["X-API-KEY"]).to eq("123abc")
+        expect(subject.request['X-API-KEY']).to eq('123abc')
       end
     end
 
