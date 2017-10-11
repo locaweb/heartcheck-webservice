@@ -14,6 +14,10 @@ module Heartcheck
 
       private
 
+      DEFAULT_OPEN_TIMEOUT = 3
+      DEFAULT_READ_TIMEOUT = 5
+      private_constant :DEFAULT_OPEN_TIMEOUT, :DEFAULT_READ_TIMEOUT
+
       # customize the error message
       # It's called in Heartcheck::Checks::Base#append_error
       #
@@ -79,12 +83,14 @@ module Heartcheck
       #
       # @return [Net:HTTP]
       def request_for(service)
-        Heartcheck::Webservice::HttpClient.new(service[:url],
-                                               service[:proxy],
-                                               service[:ignore_ssl_cert],
-                                               service[:headers],
-                                               service[:open_timeout],
-                                               service[:read_timeout]).get
+        Heartcheck::Webservice::HttpClient.new(
+          service[:url],
+          service[:proxy],
+          service[:ignore_ssl_cert],
+          service[:headers],
+          service.fetch(:open_timeout, DEFAULT_OPEN_TIMEOUT),
+          service.fetch(:read_timeout, DEFAULT_READ_TIMEOUT)
+        ).get
       end
     end
   end

@@ -63,5 +63,39 @@ describe Heartcheck::Checks::Webservice do
         end
       end
     end
+
+    context 'setting timeout on http client' do
+      it 'sets a default value when it is not given' do
+        net_http_spy = spy('Net::HTTP')
+        allow(Net::HTTP).to receive(:new).and_return(net_http_spy)
+
+        check = described_class.new
+        check.add_service(name: name, url: url, body_match: /OK/)
+
+        check.validate
+
+        expect(net_http_spy).to have_received(:open_timeout=).with(3)
+        expect(net_http_spy).to have_received(:read_timeout=).with(5)
+      end
+
+      it 'uses the given value' do
+        net_http_spy = spy('Net::HTTP')
+        allow(Net::HTTP).to receive(:new).and_return(net_http_spy)
+
+        check = described_class.new
+        check.add_service(
+          name: name,
+          url: url,
+          body_match: /OK/,
+          open_timeout: 5,
+          read_timeout: 6
+        )
+
+        check.validate
+
+        expect(net_http_spy).to have_received(:open_timeout=).with(5)
+        expect(net_http_spy).to have_received(:read_timeout=).with(6)
+      end
+    end
   end
 end
