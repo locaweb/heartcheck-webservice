@@ -52,6 +52,14 @@ Heartcheck.setup do |config|
 end
 ```
 
+### Default values
+
+| Option          | Value |
+|-----------------|-------|
+| open_timeout    | 3s    |
+| read_timeout    | 5s    |
+| ignore_ssl_cert | false |
+
 ## Contributing
 
 1. Fork it ( https://github.com/locaweb/heartcheck-webservice )
