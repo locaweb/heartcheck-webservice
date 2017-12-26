@@ -24,6 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop', '~> 0.27.0', '>= 0.27.1'
   spec.add_development_dependency 'fakeweb', '~> 1.3.0', '>= 1.3.0'
   # for documentation
-  spec.add_development_dependency 'yard', '~> 0.8.0', '>= 0.8.7'
+  spec.add_development_dependency 'yard', '~> 0.9.0'
   spec.add_development_dependency 'redcarpet', '~> 3.2.0', '>= 3.2.2'
 end
