@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'pry-nav', '~> 0.2.0', '>= 0.2.4'
   spec.add_development_dependency 'rspec', '~> 3.1.0', '>= 3.1.0'
-  spec.add_development_dependency 'rubocop', '~> 0.27.0', '>= 0.27.1'
+  spec.add_development_dependency 'rubocop', '~> 0.52.0'
   spec.add_development_dependency 'fakeweb', '~> 1.3.0', '>= 1.3.0'
   # for documentation
   spec.add_development_dependency 'yard', '~> 0.9.0'
