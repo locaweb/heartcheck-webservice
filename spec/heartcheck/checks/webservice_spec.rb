@@ -8,6 +8,24 @@ describe Heartcheck::Checks::Webservice do
     described_class.new.tap { |c| c.add_service(service) }
   end
 
+  describe '#uri_info' do
+    let(:another_service) { { name: 'someservice', url: 'https://another.com', body_match: /OK/ } }
+
+    before do
+      subject.add_service(another_service)
+    end
+
+    context 'when uri data is provided' do
+      it 'returns proper URI info for each checked webservice' do
+        response = subject.uri_info
+        expect(response).to eq([
+                                 { host: 'test.com', port: 80, scheme: 'http' },
+                                 { host: 'another.com', port: 443, scheme: 'https' }
+                               ])
+      end
+    end
+  end
+
   describe '#validate' do
     context 'when there is no error' do
       before do
