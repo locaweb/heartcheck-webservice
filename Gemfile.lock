@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    heartcheck-webservice (2.0.0)
+    heartcheck-webservice (2.1.0)
       heartcheck (~> 1.0)
 
 GEM
