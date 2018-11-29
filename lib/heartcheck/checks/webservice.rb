@@ -12,6 +12,20 @@ module Heartcheck
         end
       end
 
+      # list services uri info
+      #
+      # @return [Array]
+      def uri_info
+        services.map do |s|
+          uri = URI(s[:url])
+          {
+            host: uri.host,
+            port: uri.port,
+            scheme: uri.scheme
+          }
+        end
+      end
+
       private
 
       DEFAULT_OPEN_TIMEOUT = 3
