@@ -30,7 +30,7 @@ GEM
       slop (~> 3.4)
     pry-nav (0.2.4)
       pry (>= 0.9.10, < 0.11.0)
-    rack (2.0.3)
+    rack (2.0.7)
     rainbow (3.0.0)
     redcarpet (3.2.2)
     rspec (3.1.0)
