@@ -88,7 +88,9 @@ module Heartcheck
       #
       # @return [Bollean]
       def valid_body?(response, service)
-        service[:body_match] && response.body =~ service[:body_match]
+        return true unless service[:body_match]
+
+        response.body =~ service[:body_match]
       end
 
       # execute request
