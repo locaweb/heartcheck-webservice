@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Heartcheck::Checks::Webservice do
   let(:url) { 'http://test.com' }
   let(:name) { 'test' }
-  let(:service) { { name: name, url: url, body_match: /OK/ } }
+  let(:service) { { name: name, url: url } }
   subject do
     described_class.new.tap { |c| c.add_service(service) }
   end
@@ -28,8 +28,11 @@ describe Heartcheck::Checks::Webservice do
 
   describe '#validate' do
     context 'when there is no error' do
+      let(:another_service) { {name: 'anotherservice', url: 'https://myservice.com', body_match: /OK/ } }
+
       before do
-        FakeWeb.register_uri(:get, url,
+        subject.add_service(another_service)
+        FakeWeb.register_uri(:get, /#{url}|#{another_service[:url]}/,
                              body: 'OK',
                              status: '200')
         subject.validate

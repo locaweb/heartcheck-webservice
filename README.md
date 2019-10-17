@@ -25,18 +25,28 @@ Or install it yourself as:
 
 You can add a check to a webservice when configuring heartcheck
 
-The service is a Hash that needs to respond to `:name` to identify the service, `:url` of the service (GET request) and `:body_match` is a regex that is going to match the response body.
+The service is a Hash that needs to respond to `:name` to identify the service and `:url` of the service (GET request).
 Ex.
 
 ```ruby
 Heartcheck.setup do |config|
   config.add :webservice do |c|
-    c.add_service(name: 'CloudApi', url: "http://cloud.example.com/status", body_match: /OK/)
+    c.add_service(name: 'CloudApi', url: "http://cloud.example.com/status")
   end
 end
 ```
 
-Here is an example using all available options:
+### Other available options for the service Hash
+* body_match
+  * A regex that is going to match the response body
+* ignore_ssl_cert
+  * When set to `true` the SSL certificate won't be verified
+* open_timeout
+  * Number of seconds to wait for the connection to open
+* read_timeout
+  * Number of seconds to wait for one block to be read
+
+### Here is an example using all available options:
 
 ```ruby
 Heartcheck.setup do |config|
