@@ -3,7 +3,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
-## [2.2.0] - Unreleased
+## [3.0.0] - 2020-03-11
+## Changed
+- Add support for ruby 2.7
+- Remove support for ruby < 2.3
+- Change required version for gem rack to fit for all supported ruby versions
+
+## [2.2.0] - 2019-10-17
 ## Changed
 - Checks response body only if a `body_match` is defined
 
@@ -12,8 +18,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 - Custom implementation of Check#uri_info to provide webservices connectivity info
 
 ## [2.0.0] - 2017-10-11
-
-### Changed
-
+## Changed
 - Changed the default for open_timeout from 60s to 3s
 - Changed the default for read_timeout from 60s to 5s

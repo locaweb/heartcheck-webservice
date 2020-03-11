@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.test_files = spec.files.grep(/^spec\//)
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'heartcheck', '~> 1.0'
+  spec.add_dependency 'heartcheck', '~> 2.0'
 
   spec.add_development_dependency 'pry-nav', '~> 0.2.0', '>= 0.2.4'
   spec.add_development_dependency 'rspec', '~> 3.1.0', '>= 3.1.0'
