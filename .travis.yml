@@ -4,16 +4,8 @@ script:
   - RAILS_ENV=test bundle exec rspec spec
 matrix:
   include:
-    - rvm: "1.9.3"
-      gemfile: Gemfile-old-ruby
-    - rvm: "2.0.0"
-      gemfile: Gemfile-old-ruby
-    - rvm: "2.1.7"
-      gemfile: Gemfile-old-ruby
-    - rvm: "2.2.1"
-      gemfile: Gemfile-old-ruby
-    - rvm: 2.2
     - rvm: 2.3
     - rvm: 2.4
     - rvm: 2.5
     - rvm: 2.6
+    - rvm: 2.7
