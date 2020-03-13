@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ## Changed
 - Add support for ruby 2.7
 - Remove support for ruby < 2.3
-- Change required version for gem rack to fit for all supported ruby versions
+- Change required version for gem heartcheck to fit for newer supported ruby versions
 
 ## [2.2.0] - 2019-10-17
 ## Changed
