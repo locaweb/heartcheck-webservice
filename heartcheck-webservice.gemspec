@@ -27,6 +27,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'fakeweb', '~> 1.3.0', '>= 1.3.0'
   # for documentation
   spec.add_development_dependency 'yard', '~> 0.9.0'
-  spec.add_development_dependency 'redcarpet', '~> 3.2.0', '>= 3.2.2'
+  spec.add_development_dependency 'redcarpet', '~> 3.5.0', '>= 3.5.1'
   spec.add_development_dependency 'rake'
 end
