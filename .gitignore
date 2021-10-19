@@ -1,5 +1,6 @@
 /.bundle/
 /.DS_Store
+/.gems/
 /.ruby-gemset
 /.ruby-version
 /.rvmrc
