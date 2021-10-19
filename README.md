@@ -37,14 +37,15 @@ end
 ```
 
 ### Other available options for the service Hash
-* body_match
-  * A regex that is going to match the response body
-* ignore_ssl_cert
-  * When set to `true` the SSL certificate won't be verified
-* open_timeout
-  * Number of seconds to wait for the connection to open
-* read_timeout
-  * Number of seconds to wait for one block to be read
+
+*   body_match
+    *   A regex that is going to match the response body
+*   ignore_ssl_cert
+    *   When set to `true` the SSL certificate won't be verified
+*   open_timeout
+    *   Number of seconds to wait for the connection to open
+*   read_timeout
+    *   Number of seconds to wait for one block to be read
 
 ### Here is an example using all available options:
 
@@ -71,10 +72,30 @@ end
 | read_timeout    | 5s    |
 | ignore_ssl_cert | false |
 
+## Development setup using Docker
+
+The Docker Hearthcheck-Webservice provides a container with the current stable version of Ruby and requires you to have these tools available in your local environment:
+
+-   [Docker](https://docs.docker.com/get-docker/)
+-   [Docker Compose](https://docs.docker.com/compose/install/)
+-   [Bash](https://www.gnu.org/software/bash/)
+
+#### BootStrap Script to run the dockerized environment
+
+```bash
+./scripts/heartcheck-resque setup
+```
+
+Run the command `./scripts/heartcheck-webservice -h` to see available options.
+
 ## Contributing
 
-1. Fork it ( https://github.com/locaweb/heartcheck-webservice )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+1.  [Fork it](https://github.com/locaweb/heartcheck-webservice/fork)
+2.  Create your feature branch ( **git checkout -b my-new-feature** )
+3.  Commit your changes ( **git commit -am 'Add some feature'** )
+4.  Push to the branch ( **git push origin my-new-feature** )
+5.  Create a new Pull Request
+
+## License
+
+*   [MIT License](https://github.com/locaweb/heartcheck-webservice/blob/master/LICENSE.txt)

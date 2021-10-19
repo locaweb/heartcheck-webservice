@@ -1,0 +1,48 @@
+#!/bin/bash -e
+
+command_name=$1
+command_args=${@:2}
+
+# we are relying on docker, adding a descriptive name here
+# will help when identifiying containers with docker ps
+image_name="heartcheck-webservice"
+
+# helper to bring container alive
+run() {
+  args=${@:1}
+  docker-compose run --rm -v $PWD:/heartcheck-webservice app $args
+}
+
+case $command_name in
+  setup)
+    docker-compose build
+    run bundle install
+    ;;
+  stop)
+    docker-compose down -v --rmi all
+    ;;
+  bash)
+    run bash
+    ;;
+  bundle)
+    run bundle install
+    ;;
+  console)
+    run  bin/console
+    ;;
+  rspec)
+    run bundle exec rspec
+    ;;
+  usage)
+    echo -e "Usage:\n"
+    echo -e "heartcheck-webservice bash       - access docker sh console"
+    echo -e "heartcheck-webservice bundle     - runs bundle install"
+    echo -e "heartcheck-webservice rspec      - runs rspec"
+    echo -e "heartcheck-webservice setup      - setups docker image"
+    echo -e "heartcheck-webservice stop       - stops and removes containers, networks and volumes."
+    ;;
+  *)
+    echo -e "\n# Bootstrap Script to dockerize the hearthcheck-webservice environment\n"
+    $0 usage
+  ;;
+esac
