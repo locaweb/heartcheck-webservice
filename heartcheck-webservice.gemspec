@@ -17,12 +17,13 @@ Gem::Specification.new do |spec|
   spec.test_files = spec.files.grep(/^spec\//)
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = '>= 2.3'
+  spec.required_ruby_version = '>= 2.6'
 
   spec.add_dependency 'heartcheck', '~> 2.0'
 
   spec.add_development_dependency 'fakeweb', '~> 1.3.0', '>= 1.3.0'
   spec.add_development_dependency 'pry-nav', '~> 0.2.0', '>= 0.2.4'
+  spec.add_development_dependency 'rexml'
   spec.add_development_dependency 'rspec', '~> 3.1.0', '>= 3.1.0'
   spec.add_development_dependency 'rubocop', '~> 0.52.0'
   spec.add_development_dependency 'rubycritic'
