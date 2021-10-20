@@ -1,6 +1,6 @@
 # Heartcheck::Webservice
 
-[![Build Status](https://travis-ci.org/locaweb/heartcheck-webservice.svg)](https://travis-ci.org/locaweb/heartcheck-webservice)
+[![Build Status](https://github.com/locaweb/heartcheck/actions/workflows/ci.yml/badge.svg)](https://github.com/locaweb/heartcheck/actions/workflows/ci.yml)
 [![Ebert](https://ebertapp.io/github/locaweb/heartcheck-webservice.svg)](https://ebertapp.io/github/locaweb/heartcheck-webservice)
 
 A plugin to check webservice connection with heartcheck
