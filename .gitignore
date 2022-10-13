@@ -18,3 +18,5 @@
 *.a
 mkmf.log
 Gemfile.lock
+.idea/
+coverage/
